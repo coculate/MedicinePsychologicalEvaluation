@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+             x:Class="MedicinePsychologicalEvaluation.Views.AddProjectView">
+  <Design.DataContext>
+    <vm:CreateProjectViewModel/>
+  </Design.DataContext>
+  <Grid Margin="20" HorizontalAlignment="Center">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="100" />
+      <ColumnDefinition Width="4*" MinWidth="300"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Text="量表大类：" Grid.Row="0" Grid.Column="0" />
+    <ComboBox
+      Items="{Binding EvaluationItems}"
+      SelectedItem="{Binding Evaluation}"
+      Grid.Row="0" Grid.Column="1" Width="300">
+      <ComboBox.ItemTemplate>
+        <DataTemplate x:DataType="Binding">
+          <TextBlock Tag="{Binding Value}" Text="{Binding Text}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+
+    <TextBlock Text="问题：" Grid.Row="1" Grid.Column="0" />
+    <TextBox Text="{Binding Project.Title}" FontFamily="Microsoft YaHei" Grid.Row="1" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="选项A：" Grid.Row="2" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerA}" FontFamily="Microsoft YaHei" Grid.Row="2" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="选项B：" Grid.Row="3" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerB}" FontFamily="Microsoft YaHei" Grid.Row="3" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="选项C：" Grid.Row="4" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerC}" FontFamily="Microsoft YaHei" Grid.Row="4" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="选项D：" Grid.Row="5" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerD}" FontFamily="Microsoft YaHei" Grid.Row="5" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="答案：" Grid.Row="6" Grid.Column="0" />
+    <TextBox Text="{Binding Project.Answer}" FontFamily="Microsoft YaHei" Grid.Row="6" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="分数：" Grid.Row="7" Grid.Column="0" />
+    <TextBox Text="{Binding Project.Score}"  Grid.Row="7" Grid.Column="1"></TextBox>
+
+    <Button HorizontalAlignment="Center" Margin="50" Command="{Binding SaveBtn}" Grid.Row="8" Grid.ColumnSpan="2">保存</Button>
+  </Grid>
+</UserControl>

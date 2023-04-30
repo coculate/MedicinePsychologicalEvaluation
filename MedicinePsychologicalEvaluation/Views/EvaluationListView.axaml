@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+             xmlns:model="using:MedicinePsychologicalEvaluation.Models"
+             x:Class="MedicinePsychologicalEvaluation.Views.EvaluationListView">
+  <Design.DataContext>
+    <vm:EvaluationListViewModel />
+  </Design.DataContext>
+
+  <DockPanel>
+    <!--<StackPanel DockPanel.Dock="Top" Margin="8 0" Spacing="4">
+      <TextBox Watermark="量表名称" Text="{Binding KeyWord}" FontFamily="Microsoft YaHei"/>
+      <Button Command="{Binding QueryBtn}">查询</Button>
+    </StackPanel>-->
+    <StackPanel DockPanel.Dock="Top" Margin="8 0" Spacing="4">
+      <DataGrid Items="{Binding Items}">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="量表名称"
+                              Binding="{Binding EvaluationName}"
+                              IsReadOnly="True"
+                              Width="2*" />
+          <DataGridTextColumn Header="量表类型"
+                              Binding="{Binding EvaluationTypeName}"
+                              IsReadOnly="True"
+                              Width="2*" />
+          <DataGridTextColumn Header="分数"
+                              Binding="{Binding Score}"
+                              IsReadOnly="True"
+                              Width="*" />
+        </DataGrid.Columns>
+      </DataGrid>
+    </StackPanel>
+  </DockPanel>
+</UserControl>

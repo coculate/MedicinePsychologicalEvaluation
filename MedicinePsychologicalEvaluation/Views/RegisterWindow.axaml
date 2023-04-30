@@ -1,0 +1,109 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="430" d:DesignHeight="450"
+        x:Class="MedicinePsychologicalEvaluation.Views.RegisterWindow"
+         Icon="/Assets/avalonia-logo.ico"
+        Title="医疗心理测评系统"
+        Width="430"
+        Height="450"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+  <Design.DataContext>
+    <vm:RegisterWindowViewModel/>
+  </Design.DataContext>
+  <Window.Styles>
+    <Style Selector="TextBox.tb1">
+      <Setter Property="Margin" Value="0,-40,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="账号"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+    </Style>
+    <Style Selector="TextBox.tb2">
+      <Setter Property="Margin" Value="0,35,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="密码"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+      <Setter Property="PasswordChar" Value="*"/>
+    </Style>
+    <Style Selector="TextBox.tb3">
+      <Setter Property="Margin" Value="0,110,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="确认密码"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+      <Setter Property="PasswordChar" Value="*"/>
+    </Style>
+    <!--######<TextBox标签>######-->
+    <Style Selector="Image.img1">
+      <Setter Property="Margin" Value="0,-250,0,0"/>
+      <Setter Property="Width" Value="430"/>
+    </Style>
+    <Style Selector="Image.img2">
+      <Setter Property="Margin" Value="0,-190,0,0"/>
+      <Setter Property="Width" Value="73"/>
+      <Setter Property="Height" Value="73"/>
+    </Style>
+    <!--######<Image标签>######-->
+    <Style Selector="TextBlock.tbk1">
+      <Setter Property="Margin" Value="5,5,0,0"/>
+      <Setter Property="Foreground" Value="Blue"/>
+    </Style>
+    <Style Selector="TextBlock.tbk2">
+      <Setter Property="Margin" Value="292,300,0,0"/>
+      <Setter Property="Foreground" Value="#0c7ab9"/>
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="TextBlock.tbk3">
+      <Setter Property="Margin" Value="10,420,0,0"/>
+      <Setter Property="Foreground" Value="#696969"/>
+    </Style>
+    <!--######<TextBlock标签>######-->
+    <Style Selector="Button.bt1">
+      <Setter Property="Margin" Value="10,300,0,0"/>
+      <Setter Property="Width" Value="120"/>
+      <Setter Property="Height" Value="32"/>
+      <Setter Property="Background" Value="#407cff"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="Button.bt2">
+      <Setter Property="Margin" Value="0,300,10,0"/>
+      <Setter Property="Width" Value="120"/>
+      <Setter Property="Height" Value="32"/>
+      <Setter Property="Background" Value="#407cff"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="HorizontalAlignment" Value="Right"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <!--######<Button标签>######-->
+  </Window.Styles>
+  <StackPanel>
+    <Border Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            Padding="0"
+            Width="430"
+            Height="450">
+      <Grid>
+        <TextBlock Text="{Binding PageTitle}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 50 0 0" FontSize="17" Foreground="Blue" />
+        <TextBlock Classes="tbk1">AI测评系统</TextBlock>
+        <TextBlock Classes="tbk1" Margin="5 25 0 0">心语音辅助诊断专家</TextBlock>
+        <TextBlock Classes="tbk2" PointerPressed="Login_Click">登录</TextBlock>
+        <TextBlock Classes="tbk3" Text="{Binding Greeting}"></TextBlock>
+        <TextBox Classes="tb1" Name="UserAccount" />
+        <TextBox Classes="tb2" Name="Password" />
+        <TextBox Classes="tb3" Name="PasswordConfirm" />
+        <Button Classes="bt1" Name="Super" Click="Super_Click">超级用户注册</Button>
+        <Button Classes="bt2" Name="Normal" Click="Normal_Click">普通用户注册</Button>
+      </Grid>
+    </Border>
+  </StackPanel>
+</Window>

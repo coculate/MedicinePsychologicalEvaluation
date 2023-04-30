@@ -1,0 +1,93 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="530" d:DesignHeight="330"
+        x:Class="MedicinePsychologicalEvaluation.Views.LoginWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="医疗心理测评系统"
+        Width="530"
+        Height="330"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+  <Design.DataContext>
+    <vm:LoginWindowViewModel/>
+  </Design.DataContext>
+  <Window.Styles>
+    <Style Selector="TextBox.tb1">
+      <Setter Property="Margin" Value="0,-40,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="账号"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+    </Style>
+    <Style Selector="TextBox.tb2">
+      <Setter Property="Margin" Value="0,35,0,0"/>
+      <Setter Property="Height" Value="26"/>
+      <Setter Property="Width" Value="250"/>
+      <Setter Property="Watermark" Value="密码"/>
+      <Setter Property="BorderBrush" Value="#80c0ff"/>
+      <Setter Property="PasswordChar" Value="*"/>
+    </Style>
+    <!--######<TextBox标签>######-->
+    <Style Selector="Image.img1">
+      <Setter Property="Margin" Value="0,-250,0,0"/>
+      <Setter Property="Width" Value="430"/>
+    </Style>
+    <Style Selector="Image.img2">
+      <Setter Property="Margin" Value="0,-190,0,0"/>
+      <Setter Property="Width" Value="73"/>
+      <Setter Property="Height" Value="73"/>
+    </Style>
+    <!--######<Image标签>######-->
+    <Style Selector="TextBlock.tbk1">
+      <Setter Property="Margin" Value="5,5,0,0"/>
+      <Setter Property="Foreground" Value="Blue"/>
+    </Style>
+    <Style Selector="TextBlock.tbk2">
+      <Setter Property="Margin" Value="340,213,0,0"/>
+      <Setter Property="Foreground" Value="#0c7ab9"/>
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="TextBlock.tbk3">
+      <Setter Property="Margin" Value="10,305,0,0"/>
+      <Setter Property="Foreground" Value="#696969"/>
+    </Style>
+    <!--######<TextBlock标签>######-->
+    <Style Selector="Button.bt1">
+      <Setter Property="Margin" Value="10,195,0,0"/>
+      <Setter Property="Width" Value="120"/>
+      <Setter Property="Height" Value="32"/>
+      <Setter Property="Background" Value="#407cff"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <Style Selector="Button.bt2">
+      <Setter Property="Margin" Value="0,195,10,0"/>
+      <Setter Property="Width" Value="120"/>
+      <Setter Property="Height" Value="32"/>
+      <Setter Property="Background" Value="#407cff"/>
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="HorizontalAlignment" Value="Right"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <!--######<Button标签>######-->
+  </Window.Styles>
+  <StackPanel>
+    <Grid>
+      <TextBlock Text="{Binding PageTitle}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 50 0 0" FontSize="17" Foreground="Blue" />
+      <TextBlock Classes="tbk1">AI测评系统</TextBlock>
+      <TextBlock Classes="tbk1" Margin="5 25 0 0">心语音辅助诊断专家</TextBlock>
+      <TextBlock Classes="tbk2" PointerPressed="Register_Click">注册</TextBlock>
+      <TextBlock Classes="tbk3" Text="{Binding Greeting}"></TextBlock>
+      <TextBox Classes="tb1" Text="{Binding UserAccount}" Name="UserAccount" />
+      <TextBox Classes="tb2" Text="{Binding Password}" Name="Password" />
+      <Button Classes="bt1" Click="Super_Click">超级用户登录</Button>
+      <Button Classes="bt2" Click="Normal_Click">普通用户登录</Button>
+    </Grid>
+  </StackPanel>
+</Window>

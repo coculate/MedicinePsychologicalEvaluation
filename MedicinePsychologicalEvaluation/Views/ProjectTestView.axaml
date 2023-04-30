@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+             x:Class="MedicinePsychologicalEvaluation.Views.ProjectTestView">
+
+  <Design.DataContext>
+    <vm:ProjectTestViewModel/>
+  </Design.DataContext>
+  <DockPanel>
+    <StackPanel DockPanel.Dock="Top" Margin="8 0" Spacing="4">
+      <ScrollViewer x:Name="ScrollViewer">
+        <ListBox Name="ListOfItems" Items="{Binding Items}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel>
+                <TextBlock Text="{Binding Title, StringFormat='题目： {0}'}" HorizontalAlignment="Left"  Margin="2,0,0,2" />
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                  </Grid.RowDefinitions>
+                  <RadioButton Grid.Row="0" Grid.Column="0" 
+                               IsChecked="{Binding ItemChilds[0].IsCheck}"
+                               GroupName="{Binding id}"
+                               Content="{Binding ItemChilds[0].SelectOption}"/>
+                  <RadioButton Grid.Row="0" Grid.Column="1" 
+                               IsChecked="{Binding ItemChilds[1].IsCheck}"
+                               GroupName="{Binding id}" 
+                               Content="{Binding  ItemChilds[1].SelectOption}"/>
+                  <RadioButton Grid.Row="0" Grid.Column="2" 
+                               IsChecked="{Binding ItemChilds[2].IsCheck}"
+                               GroupName="{Binding id}" 
+                               Content="{Binding  ItemChilds[2].SelectOption}"/>
+                  <RadioButton Grid.Row="0" Grid.Column="3" 
+                               IsChecked="{Binding ItemChilds[3].IsCheck}"
+                               GroupName="{Binding id}" 
+                               Content="{Binding  ItemChilds[3].SelectOption}"/>
+                </Grid>
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </StackPanel>
+    
+    <StackPanel DockPanel.Dock="Bottom" Margin="8 0" Spacing="4">
+      <TextBlock Text="{Binding TestResult}" HorizontalAlignment="Center" Margin="20" Foreground="Red" />
+      <Button Width="60" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding OkBtn}" >确定</Button>
+    </StackPanel>
+  </DockPanel>
+
+</UserControl>

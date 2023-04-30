@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:rxui="using:Avalonia.ReactiveUI"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MedicinePsychologicalEvaluation.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="医疗心理测评系统">
+  
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <Grid ShowGridLines="True">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <StackPanel Grid.Row="0" >
+      <DockPanel>
+        <Menu DockPanel.Dock="Top">
+          <MenuItem Header="量表管理" IsVisible="{Binding IsVisible}">
+            <MenuItem Header="量表列表" Command="{Binding EvaluationList}"/>
+            <MenuItem Header="题目列表" Command="{Binding ProjectList}"/>
+            <MenuItem Header="添加量表" Command="{Binding AddEvaluation}"/>
+            <MenuItem Header="添加题目" Command="{Binding AddProject}"/>
+          </MenuItem>
+          <MenuItem Header="量表测评">
+            <MenuItem Header="焦虑自评" Command="{Binding AnxietySelf}"/>
+            <MenuItem Header="抑郁自评" Command="{Binding DepressedSelf}"/>
+            <MenuItem Header="焦虑他评" Command="{Binding AnxietyOther}"/>
+            <MenuItem Header="抑郁他评" Command="{Binding DepressedOther}"/>
+          </MenuItem>
+          <MenuItem Header="评测管理" IsVisible="{Binding IsVisible}" >
+            <MenuItem Header="评测列表" Command="{Binding RecordList}"/>
+          </MenuItem>
+          <MenuItem Header="个人信息">
+            <MenuItem Header="个人信息" Command="{Binding UserInfo}"/>
+          </MenuItem>
+        </Menu>
+      </DockPanel>
+    </StackPanel>
+    <rxui:RoutedViewHost Router="{Binding Router}" Grid.Row="1">
+      <rxui:RoutedViewHost.DefaultContent>
+      </rxui:RoutedViewHost.DefaultContent>
+    </rxui:RoutedViewHost>
+  </Grid>
+</Window>

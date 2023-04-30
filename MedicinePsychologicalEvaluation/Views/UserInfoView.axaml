@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:MedicinePsychologicalEvaluation.ViewModels"
+             x:Class="MedicinePsychologicalEvaluation.Views.UserInfoView">
+  <Design.DataContext>
+    <vm:UserInfoViewModel />
+  </Design.DataContext>
+  <Grid Margin="20" HorizontalAlignment="Center">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="100" />
+      <ColumnDefinition Width="4*" MinWidth="300"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    
+    <TextBlock Text="账号：" Grid.Row="0" Grid.Column="0" />
+    <TextBlock Text="{Binding CurrentUser.UserAccount}" Grid.Row="0" Grid.Column="1" />
+    
+    <TextBlock Text="密码：" Grid.Row="1" Grid.Column="0" />
+    <TextBox Classes="tb1" Text="{Binding CurrentUser.UserAccount}" Grid.Row="1" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="姓名：" Grid.Row="2" Grid.Column="0" />
+    <TextBox Text="{Binding CurrentUser.UserName}"  Grid.Row="2" Grid.Column="1" FontFamily="Microsoft YaHei"></TextBox>
+
+    <TextBlock Text="性别：" Grid.Row="3" Grid.Column="0" />
+    <!--<TextBox Text="{Binding CurrentUser.UserGander}" Width="260"></TextBox>-->
+    <ComboBox
+      Items="{Binding GenderItems}"
+      SelectedIndex="{Binding CurrentUser.UserGander}"
+      Grid.Row="3" Grid.Column="1" Width="300">
+      <ComboBox.ItemTemplate>
+        <DataTemplate x:DataType="Binding">
+          <TextBlock Tag="{Binding Value}" Text="{Binding Text}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+
+    <TextBlock Text="年龄：" Grid.Row="4" Grid.Column="0" />
+    <TextBox Text="{Binding CurrentUser.UserAge}"  Grid.Row="4" Grid.Column="1"></TextBox>
+
+    <TextBlock Text="学历" Grid.Row="5" Grid.Column="0" />
+    <!--<TextBox Text="{Binding CurrentUser.Education}" Width="260"></TextBox>-->
+    <ComboBox
+      Items="{Binding EducationItems}"
+      SelectedIndex="{Binding CurrentUser.Education}"
+      Grid.Row="5" Grid.Column="1" Width="300">
+      <ComboBox.ItemTemplate>
+        <DataTemplate x:DataType="Binding">
+          <TextBlock Tag="{Binding Value}" Text="{Binding Text}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+
+    <TextBlock Text="婚姻状况" Grid.Row="6" Grid.Column="0" />
+    <!--<TextBox Text="{Binding CurrentUser.Marriage}" Width="260"></TextBox>-->
+    <ComboBox
+      Items="{Binding MarriageItems}"
+      SelectedIndex="{Binding CurrentUser.Marriage}"
+      Grid.Row="6" Grid.Column="1" Width="300">
+      <ComboBox.ItemTemplate>
+        <DataTemplate x:DataType="Binding">
+          <TextBlock Tag="{Binding Value}" Text="{Binding Text}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+    <Button HorizontalAlignment="Center" Margin="50" Command="{Binding UpdateBtn}" Grid.Row="7" Grid.ColumnSpan="2">更新</Button>
+  </Grid>
+</UserControl>
