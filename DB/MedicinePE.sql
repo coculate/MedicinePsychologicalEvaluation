@@ -1,6 +1,6 @@
 USE [MedicinePE]
 GO
-/****** Object:  Table [dbo].[Medicine_Evaluation]    Script Date: 2023/4/25 17:41:57 ******/
+/****** Object:  Table [dbo].[Medicine_Evaluation]    Script Date: 2023/5/2 17:05:38 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Medicine_Evaluation](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medicine_Project]    Script Date: 2023/4/25 17:41:57 ******/
+/****** Object:  Table [dbo].[Medicine_Project]    Script Date: 2023/5/2 17:05:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -32,7 +32,10 @@ CREATE TABLE [dbo].[Medicine_Project](
 	[AnswerC] [nvarchar](max) NULL,
 	[AnswerD] [nvarchar](max) NULL,
 	[Answer] [nvarchar](max) NULL,
-	[Score] [int] NULL,
+	[ScoreA] [int] NULL,
+	[ScoreB] [int] NULL,
+	[ScoreC] [int] NULL,
+	[ScoreD] [int] NULL,
 	[UserId] [int] NULL,
 	[CreateDate] [datetime] NULL,
  CONSTRAINT [PK_Medicine_Project] PRIMARY KEY CLUSTERED 
@@ -41,7 +44,7 @@ CREATE TABLE [dbo].[Medicine_Project](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medicine_Record]    Script Date: 2023/4/25 17:41:57 ******/
+/****** Object:  Table [dbo].[Medicine_Record]    Script Date: 2023/5/2 17:05:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -58,7 +61,7 @@ CREATE TABLE [dbo].[Medicine_Record](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medicine_Users]    Script Date: 2023/4/25 17:41:57 ******/
+/****** Object:  Table [dbo].[Medicine_Users]    Script Date: 2023/5/2 17:05:39 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
