@@ -23,6 +23,8 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     <TextBlock Text="量表大类：" Grid.Row="0" Grid.Column="0" />
     <ComboBox
@@ -42,21 +44,27 @@
     <TextBlock Text="选项A：" Grid.Row="2" Grid.Column="0" />
     <TextBox Text="{Binding Project.AnswerA}" FontFamily="Microsoft YaHei" Grid.Row="2" Grid.Column="1"></TextBox>
 
-    <TextBlock Text="选项B：" Grid.Row="3" Grid.Column="0" />
-    <TextBox Text="{Binding Project.AnswerB}" FontFamily="Microsoft YaHei" Grid.Row="3" Grid.Column="1"></TextBox>
+    <TextBlock Text="分数A：" Grid.Row="3" Grid.Column="0" />
+    <TextBox Text="{Binding Project.ScoreA}"  Grid.Row="3" Grid.Column="1"></TextBox>
+    
+    <TextBlock Text="选项B：" Grid.Row="4" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerB}" FontFamily="Microsoft YaHei" Grid.Row="4" Grid.Column="1"></TextBox>
 
-    <TextBlock Text="选项C：" Grid.Row="4" Grid.Column="0" />
-    <TextBox Text="{Binding Project.AnswerC}" FontFamily="Microsoft YaHei" Grid.Row="4" Grid.Column="1"></TextBox>
+    <TextBlock Text="分数B：" Grid.Row="5" Grid.Column="0" />
+    <TextBox Text="{Binding Project.ScoreB}"  Grid.Row="5" Grid.Column="1"></TextBox>
+    
+    <TextBlock Text="选项C：" Grid.Row="6" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerC}" FontFamily="Microsoft YaHei" Grid.Row="6" Grid.Column="1"></TextBox>
 
-    <TextBlock Text="选项D：" Grid.Row="5" Grid.Column="0" />
-    <TextBox Text="{Binding Project.AnswerD}" FontFamily="Microsoft YaHei" Grid.Row="5" Grid.Column="1"></TextBox>
+    <TextBlock Text="分数C：" Grid.Row="7" Grid.Column="0" />
+    <TextBox Text="{Binding Project.ScoreC}"  Grid.Row="7" Grid.Column="1"></TextBox>
+    
+    <TextBlock Text="选项D：" Grid.Row="8" Grid.Column="0" />
+    <TextBox Text="{Binding Project.AnswerD}" FontFamily="Microsoft YaHei" Grid.Row="8" Grid.Column="1"></TextBox>
 
-    <TextBlock Text="答案：" Grid.Row="6" Grid.Column="0" />
-    <TextBox Text="{Binding Project.Answer}" FontFamily="Microsoft YaHei" Grid.Row="6" Grid.Column="1"></TextBox>
-
-    <TextBlock Text="分数：" Grid.Row="7" Grid.Column="0" />
-    <TextBox Text="{Binding Project.Score}"  Grid.Row="7" Grid.Column="1"></TextBox>
-
-    <Button HorizontalAlignment="Center" Margin="50" Command="{Binding SaveBtn}" Grid.Row="8" Grid.ColumnSpan="2">保存</Button>
+    <TextBlock Text="分数D：" Grid.Row="9" Grid.Column="0" />
+    <TextBox Text="{Binding Project.ScoreD}"  Grid.Row="9" Grid.Column="1"></TextBox>
+    
+    <Button HorizontalAlignment="Center" Margin="50" Command="{Binding SaveBtn}" Grid.Row="10" Grid.ColumnSpan="2">保存</Button>
   </Grid>
 </UserControl>

@@ -21,10 +21,24 @@ namespace MedicinePsychologicalEvaluation.ViewModels
 
         private string testResult;
 
+        /// <summary>
+        /// 检测结果
+        /// </summary>
         public string TestResult
         {
             get => testResult;
             set => this.RaiseAndSetIfChanged(ref testResult, value);
+        }
+
+        private string borderBg;
+
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        public string BoderBg
+        {
+            get => borderBg;
+            set => this.RaiseAndSetIfChanged(ref borderBg, value);
         }
 
         private ObservableCollection<ItemMain> _items;
@@ -40,6 +54,7 @@ namespace MedicinePsychologicalEvaluation.ViewModels
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             _items = new ObservableCollection<ItemMain>(GetItems(evaluationId));
             testResult = "";
+            borderBg = "White";
             OkBtn = ReactiveCommand.Create(RunTheThing);
         }
 
@@ -56,21 +71,21 @@ namespace MedicinePsychologicalEvaluation.ViewModels
         {
             using (MyDbContext db = new MyDbContext())
             {
-                var evaluations = db.Medicine_Project.Where(t => t.EvaluationId == evaluationId)
-                    .Select(t => new ItemMain
+                var evaluations = db.Medicine_Project.Where(t => t.EvaluationId == evaluationId).AsNoTracking().AsEnumerable()
+                    .Select((t, i) => new ItemMain
                     {
                         id = t.id,
+                        Rows = (i + 1),
                         EvaluationId = t.EvaluationId,
                         Title = t.Title,
                         Answer = t.Answer,
                         ItemChilds = new List<ItemChild> {
-                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerA},
-                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerB},
-                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerC},
-                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerD}
+                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerA,Score=t.ScoreA},
+                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerB,Score=t.ScoreB},
+                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerC,Score=t.ScoreC},
+                            new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerD,Score=t.ScoreD}
                         }
-                    })
-                    .AsNoTracking();
+                    });
 
                 return evaluations.ToList();
             }
@@ -80,7 +95,7 @@ namespace MedicinePsychologicalEvaluation.ViewModels
 
         private void RunTheThing()
         {
-            // 分数，暂时分配为正确答案10分，其它5分，比重都为0.6
+            // 分数计算
             int score = 0;
             StringBuilder tishi = new StringBuilder();
             for (int i = 0; i < Items.Count; i++)
@@ -92,14 +107,7 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                     tishi.AppendFormat("第{0}题还没有选择，请选择\n", (i + 1));
                     continue;
                 }
-                if (children.SelectOption == item.Answer)
-                {
-                    score += 10;
-                }
-                else
-                {
-                    score += 5;
-                }
+                score += children.Score;
             }
             if (!string.IsNullOrEmpty(tishi.ToString()))
             {
@@ -122,11 +130,11 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                 {
                     if (score < 100)
                     {
-                        TestResult = "测试结果：您是轻度患者，烦燥，坐立不安，神经过敏，紧张以及由此产生的躯体征象，如震颤等";
+                        TestResult = $"得分：{score}；测试结果：您是轻度患者，烦燥，坐立不安，神经过敏，紧张以及由此产生的躯体征象，如震颤等";
                     }
                     else
                     {
-                        TestResult = "测试结果：您是重度患者，想象死亡，早醒，难以入睡等迹象，必要时可去看医生";
+                        TestResult = $"得分：{score}；测试结果：您是重度患者，想象死亡，早醒，难以入睡等迹象，必要时可去看医生";
                     }
                 }
             }

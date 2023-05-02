@@ -56,12 +56,10 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                         EvaluationId = b.id,
                         ProjectId = a.id,
                         EvaluationName = b.EvaluationName,
-                        Answer = a.Answer,
-                        AnswerA = a.AnswerA,
-                        AnswerB = a.AnswerB,
-                        AnswerC = a.AnswerC,
-                        AnswerD = a.AnswerD,
-                        Score = a.Score,
+                        AnswerA = $"{a.AnswerA},分数:{a.ScoreA}",
+                        AnswerB = $"{a.AnswerB},分数:{a.ScoreB}",
+                        AnswerC = $"{a.AnswerC},分数:{a.ScoreC}",
+                        AnswerD = $"{a.AnswerD},分数:{a.ScoreD}",
                         Title = a.Title
                     }).AsNoTracking();
                     if (!string.IsNullOrEmpty(KeyWord))

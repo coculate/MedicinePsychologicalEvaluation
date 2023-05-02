@@ -40,14 +40,6 @@
                               Binding="{Binding AnswerD}"
                               IsReadOnly="True"
                               Width="2*" />
-          <DataGridTextColumn Header="答案"
-                              Binding="{Binding Answer}"
-                              IsReadOnly="True"
-                              Width="2*" />
-          <DataGridTextColumn Header="分数"
-                              Binding="{Binding Score}"
-                              IsReadOnly="True"
-                              Width="*" />
         </DataGrid.Columns>
       </DataGrid>
     </StackPanel>

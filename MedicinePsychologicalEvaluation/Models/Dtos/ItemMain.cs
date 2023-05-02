@@ -10,6 +10,8 @@ namespace MedicinePsychologicalEvaluation.Models.Dtos
     {
         public int id { get; set; }
 
+        public int Rows { get; set; }
+
         public int EvaluationId { get; set; }
 
         public string? Title { get; set; }
@@ -24,6 +26,8 @@ namespace MedicinePsychologicalEvaluation.Models.Dtos
         public int parentId { get; set; }
 
         public string? SelectOption { get; set; }
+
+        public int Score { get; set; }
 
         public bool IsCheck { get; set; }
 

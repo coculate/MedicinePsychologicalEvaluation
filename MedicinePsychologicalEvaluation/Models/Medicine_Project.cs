@@ -26,7 +26,13 @@ namespace MedicinePsychologicalEvaluation.Models
 
         public string? Answer { get; set; }
 
-        public int Score { get; set; }
+        public int ScoreA { get; set; }
+
+        public int ScoreB { get; set; }
+
+        public int ScoreC { get; set; }
+
+        public int ScoreD { get; set; }
 
         public int UserId { get; set; }
 

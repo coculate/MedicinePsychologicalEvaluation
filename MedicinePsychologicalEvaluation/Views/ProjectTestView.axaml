@@ -9,8 +9,35 @@
   <Design.DataContext>
     <vm:ProjectTestViewModel/>
   </Design.DataContext>
-  <DockPanel>
-    <StackPanel DockPanel.Dock="Top" Margin="8 0" Spacing="4">
+
+  <DockPanel LastChildFill="True">
+    <StackPanel DockPanel.Dock="Bottom">
+      <TextBlock Text="{Binding TestResult}" HorizontalAlignment="Center" Margin="20" Foreground="Red" />
+      <Button HorizontalAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding OkBtn}" >确定</Button>
+    </StackPanel>
+    <StackPanel Width="100" DockPanel.Dock="Right" Margin="10">
+      <Border BorderBrush="Black" BorderThickness="1" Padding="5 5 5 20">
+        <WrapPanel>
+          <TextBlock Text="题卡：" Foreground="Black" HorizontalAlignment="Center" />
+          <ItemsRepeater Items="{Binding Items}">
+            <ItemsRepeater.Layout>
+              <WrapLayout HorizontalSpacing="20" VerticalSpacing="10" />
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+              <DataTemplate>
+                <Border Padding="5"
+                        Background="Red"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                  <TextBlock Text="{Binding Rows}" Foreground="Black" HorizontalAlignment="Center" />
+                </Border>
+              </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+          </ItemsRepeater>
+        </WrapPanel>
+      </Border>
+    </StackPanel>
+    <StackPanel>
       <ScrollViewer x:Name="ScrollViewer">
         <ListBox Name="ListOfItems" Items="{Binding Items}">
           <ListBox.ItemTemplate>
@@ -27,21 +54,21 @@
                   <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                   </Grid.RowDefinitions>
-                  <RadioButton Grid.Row="0" Grid.Column="0" 
+                  <RadioButton Grid.Row="0" Grid.Column="0"
                                IsChecked="{Binding ItemChilds[0].IsCheck}"
                                GroupName="{Binding id}"
                                Content="{Binding ItemChilds[0].SelectOption}"/>
-                  <RadioButton Grid.Row="0" Grid.Column="1" 
+                  <RadioButton Grid.Row="0" Grid.Column="1"
                                IsChecked="{Binding ItemChilds[1].IsCheck}"
-                               GroupName="{Binding id}" 
+                               GroupName="{Binding id}"
                                Content="{Binding  ItemChilds[1].SelectOption}"/>
-                  <RadioButton Grid.Row="0" Grid.Column="2" 
+                  <RadioButton Grid.Row="0" Grid.Column="2"
                                IsChecked="{Binding ItemChilds[2].IsCheck}"
-                               GroupName="{Binding id}" 
+                               GroupName="{Binding id}"
                                Content="{Binding  ItemChilds[2].SelectOption}"/>
-                  <RadioButton Grid.Row="0" Grid.Column="3" 
+                  <RadioButton Grid.Row="0" Grid.Column="3"
                                IsChecked="{Binding ItemChilds[3].IsCheck}"
-                               GroupName="{Binding id}" 
+                               GroupName="{Binding id}"
                                Content="{Binding  ItemChilds[3].SelectOption}"/>
                 </Grid>
               </StackPanel>
@@ -49,11 +76,6 @@
           </ListBox.ItemTemplate>
         </ListBox>
       </ScrollViewer>
-    </StackPanel>
-    
-    <StackPanel DockPanel.Dock="Bottom" Margin="8 0" Spacing="4">
-      <TextBlock Text="{Binding TestResult}" HorizontalAlignment="Center" Margin="20" Foreground="Red" />
-      <Button Width="60" Height="40" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding OkBtn}" >确定</Button>
     </StackPanel>
   </DockPanel>
 
