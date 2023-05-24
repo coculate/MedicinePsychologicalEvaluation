@@ -38,6 +38,7 @@
           </MenuItem>
           <MenuItem Header="个人信息">
             <MenuItem Header="个人信息" Command="{Binding UserInfo}"/>
+            <MenuItem Header="退出登录" PointerPressed="LoginOut_Click"/>
           </MenuItem>
         </Menu>
       </DockPanel>

@@ -19,7 +19,7 @@ namespace MedicinePsychologicalEvaluation.Models
 
         public string? EvaluationTypeName {
             get {
-                string? name = Enum.GetName(EvaluationType); ;
+                string? name = Enum.GetName(EvaluationType);
                 return name;
             }
         }

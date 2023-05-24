@@ -57,5 +57,24 @@ namespace MedicinePsychologicalEvaluation.ViewModels
         }
 
         public ReactiveCommand<Unit, Unit> QueryBtn { get; }
+
+        public void RunTheThing(string parameter)
+        {
+            int.TryParse(parameter, out int resultId);
+            using (MyDbContext db = new MyDbContext())
+            {
+                Medicine_Evaluation record = db.Medicine_Evaluation.Find(resultId);
+                if (null != record)
+                {
+                    db.Medicine_Evaluation.Remove(record);
+                    int flag = db.SaveChanges();
+                    if (flag > 0)
+                    {
+                        HostScreen.Router.Navigate.Execute(new EvaluationListViewModel(HostScreen));
+                    }
+                }
+            }
+        }
+
     }
 }

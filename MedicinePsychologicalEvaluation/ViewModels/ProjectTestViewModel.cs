@@ -49,12 +49,17 @@ namespace MedicinePsychologicalEvaluation.ViewModels
             set => this.RaiseAndSetIfChanged(ref _items, value);
         }
 
+        public ProjectTestViewModel()
+        { 
+        
+        }
+
         public ProjectTestViewModel(IScreen screen, int evaluationId)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
             _items = new ObservableCollection<ItemMain>(GetItems(evaluationId));
             testResult = "";
-            borderBg = "White";
+            borderBg = "Red";
             OkBtn = ReactiveCommand.Create(RunTheThing);
         }
 
@@ -79,19 +84,35 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                         EvaluationId = t.EvaluationId,
                         Title = t.Title,
                         Answer = t.Answer,
+                        Background = "Red",
                         ItemChilds = new List<ItemChild> {
                             new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerA,Score=t.ScoreA},
                             new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerB,Score=t.ScoreB},
                             new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerC,Score=t.ScoreC},
                             new ItemChild{ IsCheck=false,parentId=t.id,SelectOption=t.AnswerD,Score=t.ScoreD}
                         }
-                    });
+                    }) ;
 
                 return evaluations.ToList();
             }
         }
 
         public ReactiveCommand<Unit, Unit> OkBtn { get; }
+
+        public void ChangeBackGround(string parameter)
+        {
+            int.TryParse(parameter, out int resultId);
+            ItemMain item = Items.FirstOrDefault(t => t.id == resultId);
+            if (item != null)
+            {
+                ItemChild children = item.ItemChilds.FirstOrDefault(t => t.IsCheck && t.parentId == item.id);
+                if (null == children)
+                {
+                    return;
+                }
+                item.Background = "Green";
+            }
+        }
 
         private void RunTheThing()
         {

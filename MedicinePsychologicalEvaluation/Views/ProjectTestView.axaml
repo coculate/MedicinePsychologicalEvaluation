@@ -13,7 +13,9 @@
   <DockPanel LastChildFill="True">
     <StackPanel DockPanel.Dock="Bottom">
       <TextBlock Text="{Binding TestResult}" HorizontalAlignment="Center" Margin="20" Foreground="Red" />
-      <Button HorizontalAlignment="Center" HorizontalContentAlignment="Center" Command="{Binding OkBtn}" >确定</Button>
+      <Button HorizontalAlignment="Center" 
+              HorizontalContentAlignment="Center" 
+              Command="{Binding OkBtn}" >确定</Button>
     </StackPanel>
     <StackPanel Width="100" DockPanel.Dock="Right" Margin="10">
       <Border BorderBrush="Black" BorderThickness="1" Padding="5 5 5 20">
@@ -26,7 +28,7 @@
             <ItemsRepeater.ItemTemplate>
               <DataTemplate>
                 <Border Padding="5"
-                        Background="Red"
+                        Background="{Binding Background,Mode=TwoWay}"
                         BorderBrush="Black"
                         BorderThickness="1">
                   <TextBlock Text="{Binding Rows}" Foreground="Black" HorizontalAlignment="Center" />
@@ -56,18 +58,26 @@
                   </Grid.RowDefinitions>
                   <RadioButton Grid.Row="0" Grid.Column="0"
                                IsChecked="{Binding ItemChilds[0].IsCheck}"
+                               Command="{Binding DataContext.ChangeBackGround, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
+                               CommandParameter="{Binding id}"
                                GroupName="{Binding id}"
                                Content="{Binding ItemChilds[0].SelectOption}"/>
                   <RadioButton Grid.Row="0" Grid.Column="1"
                                IsChecked="{Binding ItemChilds[1].IsCheck}"
+                               Command="{Binding DataContext.ChangeBackGround, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
+                               CommandParameter="{Binding id}"
                                GroupName="{Binding id}"
                                Content="{Binding  ItemChilds[1].SelectOption}"/>
                   <RadioButton Grid.Row="0" Grid.Column="2"
                                IsChecked="{Binding ItemChilds[2].IsCheck}"
+                               Command="{Binding DataContext.ChangeBackGround, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
+                               CommandParameter="{Binding id}"
                                GroupName="{Binding id}"
                                Content="{Binding  ItemChilds[2].SelectOption}"/>
                   <RadioButton Grid.Row="0" Grid.Column="3"
                                IsChecked="{Binding ItemChilds[3].IsCheck}"
+                               Command="{Binding DataContext.ChangeBackGround, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
+                               CommandParameter="{Binding id}"
                                GroupName="{Binding id}"
                                Content="{Binding  ItemChilds[3].SelectOption}"/>
                 </Grid>
