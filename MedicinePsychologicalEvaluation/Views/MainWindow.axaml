@@ -33,7 +33,7 @@
             <MenuItem Header="焦虑他评" Command="{Binding AnxietyOther}"/>
             <MenuItem Header="抑郁他评" Command="{Binding DepressedOther}"/>
           </MenuItem>
-          <MenuItem Header="评测管理" IsVisible="{Binding IsVisible}" >
+          <MenuItem Header="评测管理">
             <MenuItem Header="评测列表" Command="{Binding RecordList}"/>
           </MenuItem>
           <MenuItem Header="个人信息">

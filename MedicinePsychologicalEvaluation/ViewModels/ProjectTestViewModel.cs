@@ -1,5 +1,6 @@
 ﻿using MedicinePsychologicalEvaluation.Models;
 using MedicinePsychologicalEvaluation.Models.Dtos;
+using MedicinePsychologicalEvaluation.ViewModels.Common;
 using MedicinePsychologicalEvaluation.Views;
 using Microsoft.EntityFrameworkCore;
 using ReactiveUI;
@@ -149,14 +150,7 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                 int flag = db.SaveChanges();
                 if (flag > 0)
                 {
-                    if (score < 100)
-                    {
-                        TestResult = $"得分：{score}；测试结果：您是轻度患者，烦燥，坐立不安，神经过敏，紧张以及由此产生的躯体征象，如震颤等";
-                    }
-                    else
-                    {
-                        TestResult = $"得分：{score}；测试结果：您是重度患者，想象死亡，早醒，难以入睡等迹象，必要时可去看医生";
-                    }
+                    HostScreen.Router.Navigate.Execute(new ShowResultViewModel(HostScreen, score));
                 }
             }
 

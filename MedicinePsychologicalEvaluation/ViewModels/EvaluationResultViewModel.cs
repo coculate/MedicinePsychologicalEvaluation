@@ -45,9 +45,15 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                         ResultId = a.id,
                         EvaluationTypeName = b.EvaluationTypeName,
                         UserName = GetSingleUser(a.UserId).UserName,
-                        Score = a.Score
-                    }).AsNoTracking();
-                    return evaluations.ToList();
+                        UserId = a.UserId,
+                        Score = a.Score,
+                        
+                    });
+                    if (LoginUser!.UserType == 1)
+                    {
+                        evaluations = evaluations.Where(t => t.UserId == LoginUser.id);
+                    }
+                    return evaluations.AsNoTracking().ToList();
                 }
                 return new List<EvaluationResult>();
             }
@@ -70,6 +76,13 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                 }
             }
         }
+
+        public void ShowResult(string parameter)
+        {
+            int.TryParse(parameter, out int score);
+            HostScreen.Router.Navigate.Execute(new ShowResultViewModel(HostScreen, score));
+        }
+
 
     }
 }

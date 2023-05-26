@@ -18,9 +18,9 @@ namespace MedicinePsychologicalEvaluation.Views
 
         public void LoginOut_Click(object sender, PointerPressedEventArgs e)
         {
-            this.Close();
-            //LoginWindow login = new LoginWindow();
-            //login.Show();
+            this.Hide();
+            LoginWindow login = new LoginWindow();
+            login.Show();
         }
 
     }

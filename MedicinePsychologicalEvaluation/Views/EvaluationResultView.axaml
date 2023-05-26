@@ -35,8 +35,12 @@
           <DataGridTemplateColumn Header="操作" MinWidth="120">
             <DataGridTemplateColumn.CellTemplate>
               <DataTemplate>
-                <Button Command="{Binding DataContext.RunTheThing, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" 
+                <WrapPanel>
+                  <Button Command="{Binding DataContext.RunTheThing, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
                         CommandParameter="{Binding ResultId}">删除</Button>
+                  <Button Command="{Binding DataContext.ShowResult, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                          CommandParameter="{Binding Score}">查看结果</Button>
+                </WrapPanel>
               </DataTemplate>
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>

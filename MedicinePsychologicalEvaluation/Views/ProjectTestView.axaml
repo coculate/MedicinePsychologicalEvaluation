@@ -15,6 +15,7 @@
       <TextBlock Text="{Binding TestResult}" HorizontalAlignment="Center" Margin="20" Foreground="Red" />
       <Button HorizontalAlignment="Center" 
               HorizontalContentAlignment="Center" 
+              Margin="10"
               Command="{Binding OkBtn}" >确定</Button>
     </StackPanel>
     <StackPanel Width="100" DockPanel.Dock="Right" Margin="10">

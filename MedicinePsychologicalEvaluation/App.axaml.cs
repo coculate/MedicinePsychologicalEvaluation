@@ -31,6 +31,7 @@ namespace MedicinePsychologicalEvaluation
             Locator.CurrentMutable.Register<IViewFor<UserInfoViewModel>>(() => new UserInfoView());
             Locator.CurrentMutable.Register<IViewFor<ProjectTestViewModel>>(() => new ProjectTestView());
             //new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
+            Locator.CurrentMutable.Register<IViewFor<ShowResultViewModel>>(() => new ShowResultView());
 
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
