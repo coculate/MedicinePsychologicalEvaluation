@@ -41,8 +41,8 @@
       </Border>
     </StackPanel>
     <StackPanel>
-      <ScrollViewer x:Name="ScrollViewer">
-        <ListBox Name="ListOfItems" Items="{Binding Items}">
+      <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible" x:Name="ScrollViewer">
+        <ListBox Name="ListOfItems" Items="{Binding Items}" Height="680">
           <ListBox.ItemTemplate>
             <DataTemplate>
               <StackPanel>
