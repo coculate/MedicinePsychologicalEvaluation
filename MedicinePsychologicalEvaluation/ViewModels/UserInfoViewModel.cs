@@ -1,15 +1,13 @@
-﻿using MedicinePsychologicalEvaluation.Models;
+﻿using Avalonia.Controls.Notifications;
+using MedicinePsychologicalEvaluation.Models;
 using MedicinePsychologicalEvaluation.Models.Enums;
 using MedicinePsychologicalEvaluation.Views;
 using ReactiveUI;
 using Splat;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reactive;
-using System.Text;
-using System.Threading.Tasks;
+using Notification = Avalonia.Controls.Notifications.Notification;
 
 namespace MedicinePsychologicalEvaluation.ViewModels
 {
@@ -29,6 +27,11 @@ namespace MedicinePsychologicalEvaluation.ViewModels
         public IScreen HostScreen { get; }
 
         public string? UrlPathSegment { get; } = LoginUser?.UserAccount;
+
+        public UserInfoViewModel()
+        {
+
+        }
 
         public UserInfoViewModel(IScreen screen)
         {
@@ -77,7 +80,6 @@ namespace MedicinePsychologicalEvaluation.ViewModels
                     if (flag > 0)
                     {
                         DialogManage.Show(DialogType.TopCenter, "更新成功");
-                        return;
                     }
                 }
             });

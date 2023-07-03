@@ -15,6 +15,10 @@ namespace MedicinePsychologicalEvaluation.ViewModels
 
         public string UrlPathSegment { get; } = "/createevaluate";
 
+        public CreateEvaluationViewModel() {
+        
+        }
+
         public CreateEvaluationViewModel(IScreen screen)
         {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();

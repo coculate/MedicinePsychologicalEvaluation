@@ -1,14 +1,19 @@
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Notifications;
 using MedicinePsychologicalEvaluation.Models;
+using MedicinePsychologicalEvaluation.Views;
 using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicinePsychologicalEvaluation.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {
         public static string Greeting => "医疗心理测评系统";
+
+        private INotificationManager? _notificationManager;
+        public INotificationManager NotificationManager => _notificationManager
+            ??= new WindowNotificationManager((Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)?.MainWindow);
 
         public static Medicine_Users? LoginUser;
 

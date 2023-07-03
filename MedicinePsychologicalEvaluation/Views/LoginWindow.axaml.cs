@@ -9,6 +9,8 @@ using Avalonia.Interactivity;
 using MedicinePsychologicalEvaluation.Models;
 using System.Linq;
 using Splat;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia;
 
 namespace MedicinePsychologicalEvaluation.Views
 {
@@ -46,7 +48,10 @@ namespace MedicinePsychologicalEvaluation.Views
                 //MainWindow main = new MainWindow();
                 //main.Show();
                 ViewModelBase.LoginUser = user;
-                new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
+                //new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
+                var mainWindow = new MainWindow { DataContext = Locator.Current.GetService<IScreen>() };
+                (Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)!.MainWindow = mainWindow;
+                mainWindow.Show();
                 this.Close();
             }
         }
@@ -71,7 +76,10 @@ namespace MedicinePsychologicalEvaluation.Views
                 //MainWindow main = new MainWindow();
                 //main.Show();
                 ViewModelBase.LoginUser = user;
-                new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
+                //new MainWindow { DataContext = Locator.Current.GetService<IScreen>() }.Show();
+                var mainWindow = new MainWindow { DataContext = Locator.Current.GetService<IScreen>() };
+                (Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime)!.MainWindow = mainWindow;
+                mainWindow.Show();
                 this.Close();
             }
         }
